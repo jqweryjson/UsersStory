@@ -1,0 +1,18 @@
+{
+    "users": [
+        {
+            "id": "0",
+            "username": "Ivan",
+            "login": "ivanpro",
+            "password": "digitalwand",
+            "role": "user"
+        },
+        {
+            "id": "1",
+            "username": "DigitalWand",
+            "login": "digitalwand",
+            "password": "digitalwand",
+            "role": "admin"
+        }
+    ]
+}

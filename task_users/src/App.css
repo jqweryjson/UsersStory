@@ -1,0 +1,79 @@
+.webPage * {
+  box-sizing: border-box;
+}
+.webPage button {
+  border:none;
+  border-radius: 5px;
+  color:#fff;
+  background: #000;
+  padding:10px 30px;
+}
+.webPage button:focus {
+  outline: none;
+}
+.webPage button:hover {
+
+}
+.webPage {
+  position: relative;
+}
+
+.sideMenu {
+  position: absolute;
+  transform: translate3d(-100%,0,0);
+  transition: transform .2s ease;
+  display: flex;
+  flex-flow:column nowrap;
+  padding:10px 10px 20px;
+}
+.sideMenu button {
+  margin-bottom: 10px;
+}
+
+.show {
+  transform: translate3d(0%,0,0)
+}
+
+.content {
+  position: absolute;
+  left: 0px;
+  border-left: 2px solid #5a5a5a;
+  padding-left: 3px;
+  transition: transform .2s ease;
+}
+.content button {
+  margin:10px;
+}
+.info {
+  padding:10px;
+}
+.info {
+}
+.info > span {
+  display: block;
+}
+.info button {
+  margin-left:0;
+}
+.move {
+  transform: translate3d(20%,0,0)
+}
+
+.about {
+  display: none;
+}
+.webPage button.menu-btn {
+  border:none;
+  width:45px;
+  display:block;
+  background: none;
+  padding: 10px;
+}
+.menu-btn span {
+  background-color: #eee;
+  display:block;
+  height: 3px;
+}
+.menu-btn span:not(:last-child) {
+  margin-bottom: 2px;
+}
