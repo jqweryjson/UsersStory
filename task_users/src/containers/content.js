@@ -1,17 +1,14 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Navigate from '../containers/navigate';
+import { Button } from "../components/dumb";
 import {showSideMenu, setGroup} from '../actions/index';
 
-class Content extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			openSideMenu: false,
-			mainContent: true
-		}
+class Content extends React.PureComponent {
+	state = {
+		openSideMenu: false,
+		mainContent: true
 	}
 
 	componentWillMount(){
@@ -19,6 +16,8 @@ class Content extends Component {
 	}
 
 	getGroup(group) {
+		const f = this;;
+		debugger;
 		if (group === 'all') {
 			return this.props.setGroup(this.props.userInfo);
 		} else if ((group === 'first') || (group === 'second') || (group === 'third')) {
@@ -51,10 +50,7 @@ class Content extends Component {
 					<span></span>
 				</button>
 				<hr/>
-				<button onClick={() => this.getGroup('all')}>All</button>
-				<button onClick={() => this.getGroup('first')}>First group</button>
-				<button onClick={() => this.getGroup('second')}>Second group</button>
-				<button onClick={() => this.getGroup('third')}>Third group</button>
+				{ ['All','First group','Second group','Third group',].map(item => <Button key={item} value={item} text={item} onClick={this.getGroup} />) }
 				<Navigate />
 			</div>
 		);

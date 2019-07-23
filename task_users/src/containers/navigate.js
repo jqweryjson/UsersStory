@@ -1,27 +1,24 @@
-import React, {Component} from 'react';
+import * as React from 'react';
+import { Button } from "../components/dumb";
 import {connect} from 'react-redux';
 
-class Navigate extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			userID: 0
+class Navigate extends React.PureComponent {
+
+	state = {
+		userID: 0
+	}
+	switchPrevious = () => {
+		if (this.state.userID !== 0) {
+			this.setState({
+				userID: this.state.userID - 1
+			});
 		}
 	}
-
-	switchUser = (direction) => {
-		if (direction === 'next') {
-			if (this.state.userID !== (this.props.currentGroup.length - 1)) {
-				this.setState({
-					userID: this.state.userID + 1
-				});
-			}
-		} else {
-			if (this.state.userID !== 0) {
-				this.setState({
-					userID: this.state.userID - 1
-				});
-			}
+	switchNext = () => {
+		if (this.state.userID !== (this.props.currentGroup.length - 1)) {
+			this.setState({
+				userID: this.state.userID + 1
+			});
 		}
 	}
 
@@ -30,19 +27,25 @@ class Navigate extends Component {
 			<div className="nav-users">
 				<div className="navigate" ref="navigate">
 					<div className="nav-bar">
-						<button className="toLeft"
-							onClick={this.switchUser('previous')}>&lt;</button>
+						<Button className="toLeft" 
+							text="&lt;" 
+							onClick={this.switchPrevious} />
 						<span>{this.state.userID + 1} from {this.props.currentGroup.length}</span>
-						<button className="toRight" 
-							onClick={() => this.switchUser('next')}>&gt;</button>
+						<Button className="toRight"  
+							text="&gt;" 
+							onClick={this.switchNext} />							
 					</div>
 					<div className="info">
 						<span>Name: {this.props.currentGroup[this.state.userID].name}</span> 
-						<button className="edit" ref="editName">Edit</button>
+						<Button className="edit" 
+							ref="editName" 
+							text="Edit" />
 					</div>
 					<div className="info">
 						<span>Description: {this.props.currentGroup[this.state.userID].description}</span> 
-						<button className="edit" ref="editDesc">Edit</button>
+						<Button className="edit" 
+							ref="editDesc" 
+							text="Edit" />
 					</div>
 				</div>
 				<div className="about" ref="about">
